@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @blog.description %>
+</p>
+
+<p>
+  <strong>File</strong>
+  <%= image_tag(@blog.image, size: "50x50") %>
+</p>
+
+<p>
+  <strong>Public url for this blog: </strong>
+  <% if @blog.shortened_urls.empty?
+    generate_short_url(@blog)
+  end %>
+  <%= display_short_url(@blog) %>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
